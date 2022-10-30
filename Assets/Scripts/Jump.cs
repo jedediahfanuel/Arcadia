@@ -18,8 +18,8 @@ public class Jump : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
             {
-                GroundCheck();
-                // rb.AddForce(Vector2.up * jumpforce,ForceMode2D.Impulse);
+                // GroundCheck();
+                rb.AddForce(Vector2.up * jumpforce,ForceMode2D.Impulse);
                 
             }
     }
