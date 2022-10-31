@@ -16,12 +16,30 @@ public class Jump : MonoBehaviour
         c = 1;
     }
 
+    GameObject particle;
     // Update is called once per frame
     void Update()
     {
         if (isGrounded)
         {
             DoJump();
+            DoJumpByTouch();
+        }
+    }
+
+    void DoJumpByTouch()
+    {
+        foreach(Touch touch in Input.touches)
+        {
+            if (touch.phase == TouchPhase.Began)
+            {
+                rb.AddForce(new Vector2(0f, jumpSpeed), ForceMode2D.Impulse);
+                if (c > 0) {
+                    c = c - 1;
+                } else {
+                    isGrounded = false;
+                }
+            }
         }
     }
 
