@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Jump : MonoBehaviour
 {
-    public float jumpSpeed = 12;
+    public float jumpSpeed = 18;
     public Rigidbody2D rb;
     bool isGrounded;
     Vector3 movement;
