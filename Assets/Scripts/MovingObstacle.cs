@@ -23,12 +23,11 @@ public class MovingObstacle : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        // suv = GameObject.Find("suv"); 
         if(collision.gameObject.name == "suv")
         {
-            // Debug.Log("Game over");
             Vector2 direction = collision.GetContact(0).normal;
-            // Debug.Log(direction);
-            if( direction.x == 1 ) Debug.Log("Game over 1");
+            if( direction.x > 0.9 ) Debug.Log("Game over");
         }
     }
 }

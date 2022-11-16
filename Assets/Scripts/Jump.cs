@@ -9,21 +9,35 @@ public class Jump : MonoBehaviour
     bool isGrounded;
     Vector3 movement;
     int c;
+    bool isUpsideDown = false;
+    public float moveSpeed = 10;
+    GameObject suv;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         c = 1;
+        suv = GameObject.Find("suv");
     }
 
     GameObject particle;
     // Update is called once per frame
     void Update()
-    {
-        if (isGrounded)
+    {   
+        if(suv.transform.rotation.z == -1)
         {
-            DoJump();
-            DoJumpByTouch();
+            isUpsideDown = true;
+        }
+        // Debug.Log(suv.transform.rotation.z);
+        if (isUpsideDown == false) 
+        {
+            if (isGrounded)
+            {
+                DoJump();
+                DoJumpByTouch();
+            }
+        } else {
+            transform.Translate(Vector2.right * Time.deltaTime * moveSpeed);
         }
     }
 
