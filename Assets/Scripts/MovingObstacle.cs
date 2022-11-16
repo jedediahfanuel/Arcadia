@@ -27,7 +27,6 @@ public class MovingObstacle : MonoBehaviour
         if(collision.gameObject.name == "suv")
         {
             Vector2 direction = collision.GetContact(0).normal;
-            Debug.Log(direction.x);
             if( direction.x > 0.9 ) Debug.Log("Game over");
         }
     }

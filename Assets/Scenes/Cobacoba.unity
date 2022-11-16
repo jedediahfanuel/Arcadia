@@ -393,6 +393,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpSpeed: 18
   rb: {fileID: 0}
+  moveSpeed: 10
 --- !u!61 &1019814252
 BoxCollider2D:
   m_ObjectHideFlags: 0
