@@ -11,24 +11,24 @@ public class Jump : MonoBehaviour
     int c;
     bool isUpsideDown = false;
     public float moveSpeed = 10;
-    GameObject suv;
+    GameObject player;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         c = 1;
-        suv = GameObject.Find("suv");
+        player = GameObject.Find("player");
     }
 
     GameObject particle;
     // Update is called once per frame
     void Update()
     {   
-        if(suv.transform.rotation.z == -1)
+        if(player.transform.rotation.z == -1)
         {
             isUpsideDown = true;
         }
-        // Debug.Log(suv.transform.rotation.z);
+        // Debug.Log(player.transform.rotation.z);
         if (isUpsideDown == false) 
         {
             if (isGrounded)

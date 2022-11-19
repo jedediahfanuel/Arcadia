@@ -23,8 +23,8 @@ public class MovingObstacle : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        // suv = GameObject.Find("suv"); 
-        if(collision.gameObject.name == "suv")
+        // player = GameObject.Find("player"); 
+        if(collision.gameObject.name == "player")
         {
             Vector2 direction = collision.GetContact(0).normal;
             if( direction.x > 0.9 ) Debug.Log("Game over");
