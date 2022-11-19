@@ -433,7 +433,7 @@ GameObject:
   - component: {fileID: 1222918379}
   - component: {fileID: 1222918377}
   m_Layer: 0
-  m_Name: grave3D
+  m_Name: background3D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -529,7 +529,7 @@ GameObject:
   - component: {fileID: 1278256316}
   - component: {fileID: 1278256315}
   m_Layer: 0
-  m_Name: grave
+  m_Name: ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
