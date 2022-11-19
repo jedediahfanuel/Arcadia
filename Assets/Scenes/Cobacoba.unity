@@ -285,7 +285,7 @@ GameObject:
   - component: {fileID: 1019814251}
   - component: {fileID: 1019814252}
   m_Layer: 0
-  m_Name: suv
+  m_Name: player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
