@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
     {
         if (audioSource == null)
         {
-            Debug.LogError("The audio source in the -game manager- is NULL | the audio source commponent have not been added before");
+            Debug.LogError("The audio source in the -game manager- is NULL || the audio source commponent have not been added before");
         }
         else
         {

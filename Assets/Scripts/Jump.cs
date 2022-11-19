@@ -12,12 +12,22 @@ public class Jump : MonoBehaviour
     bool isUpsideDown = false;
     public float moveSpeed = 10;
     GameObject player;
+    private AudioSource audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         c = 1;
         player = GameObject.Find("player");
+        
+        audioSource = GetComponent<AudioSource>();
+        CheckAudioSource();
+    }
+
+    private void CheckAudioSource()
+    {
+        if (audioSource == null) Debug.LogError("The audio source in the -player- is NULL || the audio source commponent have not been added before");
     }
 
     GameObject particle;
@@ -48,6 +58,8 @@ public class Jump : MonoBehaviour
             if (touch.phase == TouchPhase.Began)
             {
                 rb.AddForce(new Vector2(0f, jumpSpeed), ForceMode2D.Impulse);
+                audioSource.Play();
+
                 if (c > 0) {
                     c = c - 1;
                 } else {
@@ -62,7 +74,9 @@ public class Jump : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             rb.AddForce(new Vector2(0f, jumpSpeed), ForceMode2D.Impulse);
-            if(c  > 0 ) {
+            audioSource.Play();
+            
+            if (c > 0) {
                 c = c - 1;
             } else {
                 isGrounded  = false;

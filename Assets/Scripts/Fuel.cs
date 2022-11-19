@@ -25,8 +25,9 @@ public class Fuel : MonoBehaviour
     {
         if (collision.gameObject.name == "player")
         {
-            Destroy(gameObject);
+            gameManager.PlayFuelSound();
             gameManager.UpdateScore(1);
+            Destroy(gameObject);
         }
     }
 }
