@@ -566,6 +566,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6699741750349598677, guid: b3c90fd526f5104459a3b48112485c26, type: 3}
+      propertyPath: jumpSpeed
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 6699741750349598678, guid: b3c90fd526f5104459a3b48112485c26, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -613,6 +617,18 @@ PrefabInstance:
     - target: {fileID: 6699741750349598679, guid: b3c90fd526f5104459a3b48112485c26, type: 3}
       propertyPath: m_Mass
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6699741750349598679, guid: b3c90fd526f5104459a3b48112485c26, type: 3}
+      propertyPath: m_AngularDrag
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6699741750349598679, guid: b3c90fd526f5104459a3b48112485c26, type: 3}
+      propertyPath: m_UseAutoMass
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6699741750349598679, guid: b3c90fd526f5104459a3b48112485c26, type: 3}
+      propertyPath: m_GravityScale
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 6699741750349598680, guid: b3c90fd526f5104459a3b48112485c26, type: 3}
       propertyPath: m_Name

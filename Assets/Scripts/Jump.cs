@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Jump : MonoBehaviour
 {
-    public float jumpSpeed = 18;
+    public float jumpSpeed = 25;
     public Rigidbody2D rb;
     bool isGrounded;
     Vector3 movement;
@@ -73,7 +73,8 @@ public class Jump : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            rb.AddForce(new Vector2(0f, jumpSpeed), ForceMode2D.Impulse);
+            rb.AddForce(new Vector2(0f, jumpSpeed - rb.velocity.y), ForceMode2D.Impulse);
+            Debug.Log(rb.velocity);
             audioSource.Play();
             
             if (c > 0) {
