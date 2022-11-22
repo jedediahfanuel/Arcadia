@@ -57,7 +57,7 @@ public class Jump : MonoBehaviour
         {
             if (touch.phase == TouchPhase.Began)
             {
-                rb.AddForce(new Vector2(0f, jumpSpeed), ForceMode2D.Impulse);
+                rb.AddForce(new Vector2(0f, jumpSpeed - rb.velocity.y), ForceMode2D.Impulse);
                 audioSource.Play();
 
                 if (c > 0) {
