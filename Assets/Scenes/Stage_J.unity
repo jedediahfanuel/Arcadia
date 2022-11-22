@@ -360,7 +360,7 @@ AudioSource:
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
-  Mute: 1
+  Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
@@ -449,7 +449,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 969760319}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.101917006, y: -0.101917006, z: -9.9395275}
+  m_LocalPosition: {x: -23.01, y: 2.74, z: -9.9395275}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -564,6 +564,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4577185863530268468, guid: 7d10811b03016914ba5e713d446111a9, type: 3}
+      propertyPath: m_GravityScale
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4940339656994583548, guid: 7d10811b03016914ba5e713d446111a9, type: 3}
+      propertyPath: jumpSpeed
+      value: 27
+      objectReference: {fileID: 0}
     - target: {fileID: 6953580792529785778, guid: 7d10811b03016914ba5e713d446111a9, type: 3}
       propertyPath: m_Name
       value: player
