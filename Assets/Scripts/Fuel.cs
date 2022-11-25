@@ -5,6 +5,7 @@ using UnityEngine;
 public class Fuel : MonoBehaviour
 {
     public Rigidbody2D rb;
+    private float leftBound = -30;
     public float moveSpeed = 10;
     private GameManager gameManager;
 
@@ -19,6 +20,7 @@ public class Fuel : MonoBehaviour
     void Update()
     {
         transform.Translate(Vector2.left * Time.deltaTime * moveSpeed);
+        DestroyObstacleExitCamera();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -29,5 +31,10 @@ public class Fuel : MonoBehaviour
             gameManager.UpdateScore(1);
             Destroy(gameObject);
         }
+    }
+
+    private void DestroyObstacleExitCamera()
+    {
+        if (transform.position.x < leftBound) Destroy(gameObject);
     }
 }
