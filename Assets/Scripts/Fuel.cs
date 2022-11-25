@@ -7,12 +7,15 @@ public class Fuel : MonoBehaviour
     public Rigidbody2D rb;
     public float moveSpeed = 10;
     private GameManager gameManager;
+    // public ProgressBar pb;
+    HealthBar hb;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        hb = GameObject.Find("UI ProgressBar").GetComponent<HealthBar>();
     }
 
     // Update is called once per frame
@@ -27,6 +30,9 @@ public class Fuel : MonoBehaviour
         {
             gameManager.PlayFuelSound();
             gameManager.UpdateScore(1);
+            // pb.BarValue += 5;
+            hb.AddProgressBar(5);
+            // Debug.Log(pb.BarValue);
             Destroy(gameObject);
         }
     }

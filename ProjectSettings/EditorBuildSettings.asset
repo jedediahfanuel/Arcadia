@@ -12,6 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: de146aa11b418aa4eb5f3aa013f588da
   - enabled: 1
-    path: Assets/Scenes/Cobacoba.unity
+    path: Assets/Scenes/Stage_T.unity
     guid: 7e40e8a34f80e407392564d68aad83cd
   m_configObjects: {}
