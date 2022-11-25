@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
 
     public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI finalScore;
     private int score;
 
     [SerializeField]
@@ -52,5 +54,16 @@ public class GameManager : MonoBehaviour
     {
         score += scoreToAdd;
         scoreText.text = "Score: " + score;
+    }
+
+    public void EndOfStage()
+    {
+        // Do Something after the stage is finish
+        // Save score, etc.
+        Debug.LogError("The Final Score = " + score);
+
+        // After OK, 
+        // Redirect to stage selection menu
+        SceneManager.LoadScene(1);
     }
 }

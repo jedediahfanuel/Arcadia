@@ -15,6 +15,7 @@ public class Jump : MonoBehaviour
     private AudioSource audioSource;
     float elapsed = 0f;
     private GameManager gameManager;
+    private float leftBound = -30;
 
     // Start is called before the first frame update
     void Start()
@@ -33,10 +34,11 @@ public class Jump : MonoBehaviour
         if (audioSource == null) Debug.LogError("The audio source in the -player- is NULL || the audio source commponent have not been added before");
     }
 
-    GameObject particle;
     // Update is called once per frame
     void Update()
     {   
+        LoseCondition();
+
         if(player.transform.rotation.z == -1)
         {
             isUpsideDown = true;
@@ -95,10 +97,16 @@ public class Jump : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.name == "ground")
+        if (collision.gameObject.name == "ground")
         {
             isGrounded = true;
             c = 1;
         }
+    }
+
+    private void LoseCondition()
+    {
+        // The player out of camera
+        if (transform.position.x < leftBound) gameManager.EndOfStage();
     }
 }
