@@ -23,7 +23,7 @@ public class Fuel : MonoBehaviour
     void Update()
     {
         transform.Translate(Vector2.left * Time.deltaTime * moveSpeed);
-        DestroyObstacleExitCamera();
+        DestroyFuelExitCamera();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -39,7 +39,7 @@ public class Fuel : MonoBehaviour
         }
     }
 
-    private void DestroyObstacleExitCamera()
+    private void DestroyFuelExitCamera()
     {
         if (transform.position.x < leftBound) Destroy(gameObject);
     }
