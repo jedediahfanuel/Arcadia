@@ -13,6 +13,8 @@ public class Jump : MonoBehaviour
     public float moveSpeed = 10;
     GameObject player;
     private AudioSource audioSource;
+    float elapsed = 0f;
+    private GameManager gameManager;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +22,7 @@ public class Jump : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         c = 1;
         player = GameObject.Find("player");
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         
         audioSource = GetComponent<AudioSource>();
         CheckAudioSource();
@@ -45,6 +48,11 @@ public class Jump : MonoBehaviour
             {
                 DoJump();
                 DoJumpByTouch();
+            }
+            elapsed += Time.deltaTime;
+            if (elapsed >= 1f) {
+                elapsed = elapsed % 1f;
+                gameManager.UpdateScore(1);
             }
         } else {
             transform.Translate(Vector2.right * Time.deltaTime * moveSpeed);
