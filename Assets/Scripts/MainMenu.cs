@@ -20,6 +20,6 @@ public class MainMenu : MonoBehaviour
     public void LoadGame()
     {
         // Load the game scene
-        SceneManager.LoadScene(1); // 0 = MainMenu scene, 1 = CobaCoba scene
+        SceneManager.LoadScene(1);
     }
 }
