@@ -6,17 +6,17 @@ public class StageEnd : MonoBehaviour
 {
     AudioSource audioSource;
     private GameManager gameManager;
+    private PauseMenu pauseMenu;
 
-    // Start is called before the first frame update
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
         if (audioSource == null) Debug.LogError("Audio source in -Music Object- is NULL");
 
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        pauseMenu = GameObject.Find("Canvas").GetComponent<PauseMenu>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         LoseCondition();
@@ -25,6 +25,6 @@ public class StageEnd : MonoBehaviour
     private void LoseCondition()
     {
         // The stage is finish
-        if (!audioSource.isPlaying) gameManager.EndOfStage();
+        if (!audioSource.isPlaying && !pauseMenu.GetIsPaused()) gameManager.EndOfStage();
     }
 }

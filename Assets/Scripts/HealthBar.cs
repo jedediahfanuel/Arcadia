@@ -7,13 +7,12 @@ public class HealthBar : MonoBehaviour
     public ProgressBar pb;
     public int value = 100;
     float elapsed = 0f;
-    // Start is called before the first frame update
+
     void Start()
     {
         pb.BarValue = value;
     }
 
-    // Update is called once per frame
     void Update()
     {
         elapsed += Time.deltaTime;

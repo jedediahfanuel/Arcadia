@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreText: {fileID: 0}
   fuelSound: {fileID: 8300000, guid: eaae8fe8d600e1f459f34aa5757fa3b8, type: 3}
+  gameOverSound: {fileID: 8300000, guid: aa967a280457c054bb646d57611f5bd0, type: 3}
 --- !u!82 &2547493047007691173
 AudioSource:
   m_ObjectHideFlags: 0

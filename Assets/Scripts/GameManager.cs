@@ -1,23 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
 
     public TextMeshProUGUI scoreText;
-    public TextMeshProUGUI finalScore;
+    private ClosePanel closingPanel;
     private int score;
 
     [SerializeField]
-    private AudioClip fuelSound;
+    public AudioClip fuelSound;
+    public AudioClip gameOverSound;
     private AudioSource audioSource;
 
-    // Start is called before the first frame update
     void Start()
     {
+        closingPanel = GameObject.Find("Canvas").GetComponent<ClosePanel>();
+
+        // Make sure the stage is running on start
+        Time.timeScale = 1f;
+
         audioSource = GetComponent<AudioSource>();
         CheckAudioSource();
 
@@ -27,11 +32,16 @@ public class GameManager : MonoBehaviour
         UpdateScore(0);
     }
 
+    void Update()
+    {
+        
+    }
+
     private void CheckAudioSource()
     {
         if (audioSource == null)
         {
-            Debug.LogError("The audio source in the -game manager- is NULL || the audio source commponent have not been added before");
+            Debug.LogError("Please add AudioSource component in GameManager Object");
         }
         else
         {
@@ -44,10 +54,9 @@ public class GameManager : MonoBehaviour
         audioSource.PlayOneShot(fuelSound);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void PlayGameOverSound()
     {
-        
+        audioSource.PlayOneShot(gameOverSound);
     }
 
     public void UpdateScore(int scoreToAdd)
@@ -62,8 +71,6 @@ public class GameManager : MonoBehaviour
         // Save score, etc.
         Debug.LogError("The Final Score = " + score);
 
-        // After OK, 
-        // Redirect to stage selection menu
-        SceneManager.LoadScene(1);
+        closingPanel.PanelOn(score);
     }
 }

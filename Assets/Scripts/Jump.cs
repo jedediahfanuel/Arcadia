@@ -17,7 +17,6 @@ public class Jump : MonoBehaviour
     private GameManager gameManager;
     private float leftBound = -30;
 
-    // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -34,7 +33,6 @@ public class Jump : MonoBehaviour
         if (audioSource == null) Debug.LogError("The audio source in the -player- is NULL || the audio source commponent have not been added before");
     }
 
-    // Update is called once per frame
     void Update()
     {   
         LoseCondition();
@@ -43,7 +41,7 @@ public class Jump : MonoBehaviour
         {
             isUpsideDown = true;
         }
-        // Debug.Log(player.transform.rotation.z);
+        
         if (isUpsideDown == false) 
         {
             if (isGrounded)

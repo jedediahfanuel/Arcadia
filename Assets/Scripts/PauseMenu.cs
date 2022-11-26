@@ -5,31 +5,45 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
-    public static bool gameIsPaused = false; 
     public GameObject pauseMenuUI;
+    private bool isPaused;
     // AudioSource audioSource;
+
+    void Start()
+    {
+        if (pauseMenuUI == null) Debug.LogError("The Pause Menu UI in -Canvas > pauseMenu (Script)- is NULL");
+
+        pauseMenuUI.SetActive(false);
+    }
 
     // Update is called once per frame
     void Update()
     {
-        // if(Input.GetKeyDown(KeyCode.Escape))
-        // {
-        //     if(gameIsPaused)
-        //     {
-        //         Resume();
-        //     } else
-        //     {
-        //         Pause();
-        //     }
-        // }
+
     }
 
     public void Resume()
     {
-        pauseMenuUI.SetActive(false);
+        isPaused = false;
         Time.timeScale = 1f;
-        gameIsPaused = false;
-        // audioSource.Play(0);
+
+        pauseMenuUI.SetActive(false);
+
+        PlayAudio();
+    }
+
+    public void Pause()
+    {
+        isPaused = true;
+        Time.timeScale = 0f;
+
+        pauseMenuUI.SetActive(true);
+        
+        PauseAudio();
+    }
+
+    public void PlayAudio()
+    {
         AudioSource[] audios = FindObjectsOfType<AudioSource>();
         foreach (AudioSource a in audios)
         {
@@ -37,11 +51,8 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
-    public void Pause()
+    public void PauseAudio()
     {
-        pauseMenuUI.SetActive(true);
-        Time.timeScale = 0f;
-        gameIsPaused = true;
         AudioSource[] audios = FindObjectsOfType<AudioSource>();
         foreach (AudioSource a in audios)
         {
@@ -58,7 +69,10 @@ public class PauseMenu : MonoBehaviour
     public void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        Resume();
-        // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public bool GetIsPaused()
+    {
+        return isPaused;
     }
 }
