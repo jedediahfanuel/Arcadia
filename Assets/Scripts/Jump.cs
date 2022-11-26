@@ -84,7 +84,7 @@ public class Jump : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             rb.AddForce(new Vector2(0f, jumpSpeed - rb.velocity.y), ForceMode2D.Impulse);
-            Debug.Log(rb.velocity);
+            // Debug.Log(rb.velocity);
             audioSource.Play();
             
             if (c > 0) {
