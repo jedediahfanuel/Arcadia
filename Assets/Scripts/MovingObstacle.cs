@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class MovingObstacle : MonoBehaviour
 {
-    // Start is called before the first frame update
 
     public Rigidbody2D rb;
     public float moveSpeed = 10;
@@ -18,7 +17,6 @@ public class MovingObstacle : MonoBehaviour
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         transform.Translate(Vector2.left * Time.deltaTime * moveSpeed);
@@ -32,7 +30,6 @@ public class MovingObstacle : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        // player = GameObject.Find("player"); 
         if (collision.gameObject.name == "player")
         {
             Vector2 direction = collision.GetContact(0).normal;

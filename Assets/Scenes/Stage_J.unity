@@ -25767,9 +25767,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5308094926159893655, guid: e4a57b61565404bba8a827aab3ac1a02, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5308094926159893658, guid: e4a57b61565404bba8a827aab3ac1a02, type: 3}
       propertyPath: m_Navigation.m_Mode
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5308094926159893658, guid: e4a57b61565404bba8a827aab3ac1a02, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5308094926159893658, guid: e4a57b61565404bba8a827aab3ac1a02, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Pause
+      objectReference: {fileID: 0}
+    - target: {fileID: 5308094926628529612, guid: e4a57b61565404bba8a827aab3ac1a02, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5308094926628529616, guid: e4a57b61565404bba8a827aab3ac1a02, type: 3}
       propertyPath: m_IsActive

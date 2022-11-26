@@ -15,7 +15,6 @@ public class GameManager : MonoBehaviour
     private AudioClip fuelSound;
     private AudioSource audioSource;
 
-    // Start is called before the first frame update
     void Start()
     {
         closingPanel = GameObject.Find("Canvas").GetComponent<ClosePanel>();
@@ -30,6 +29,11 @@ public class GameManager : MonoBehaviour
         
         score = 0;
         UpdateScore(0);
+    }
+
+    void Update()
+    {
+        
     }
 
     private void CheckAudioSource()
@@ -47,12 +51,6 @@ public class GameManager : MonoBehaviour
     public void PlayFuelSound()
     {
         audioSource.PlayOneShot(fuelSound);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void UpdateScore(int scoreToAdd)

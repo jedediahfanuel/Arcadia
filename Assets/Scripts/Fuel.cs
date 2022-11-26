@@ -8,10 +8,8 @@ public class Fuel : MonoBehaviour
     private float leftBound = -30;
     public float moveSpeed = 10;
     private GameManager gameManager;
-    // public ProgressBar pb;
     HealthBar hb;
 
-    // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -19,7 +17,6 @@ public class Fuel : MonoBehaviour
         hb = GameObject.Find("UI ProgressBar").GetComponent<HealthBar>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         transform.Translate(Vector2.left * Time.deltaTime * moveSpeed);

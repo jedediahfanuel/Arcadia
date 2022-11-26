@@ -7,7 +7,6 @@ public class StageEnd : MonoBehaviour
     AudioSource audioSource;
     private GameManager gameManager;
 
-    // Start is called before the first frame update
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
@@ -16,7 +15,6 @@ public class StageEnd : MonoBehaviour
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         LoseCondition();
