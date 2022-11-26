@@ -1,14 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
 
     public TextMeshProUGUI scoreText;
-    public TextMeshProUGUI finalScore;
+    private ClosePanel closingPanel;
     private int score;
 
     [SerializeField]
@@ -18,6 +18,9 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        closingPanel = GameObject.Find("Canvas").GetComponent<ClosePanel>();
+        closingPanel.PanelOff();
+
         audioSource = GetComponent<AudioSource>();
         CheckAudioSource();
 
@@ -62,8 +65,6 @@ public class GameManager : MonoBehaviour
         // Save score, etc.
         Debug.LogError("The Final Score = " + score);
 
-        // After OK, 
-        // Redirect to stage selection menu
-        SceneManager.LoadScene(1);
+        closingPanel.PanelOn(score);
     }
 }
