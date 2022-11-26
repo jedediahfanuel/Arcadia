@@ -8,6 +8,8 @@ public class StageEnd : MonoBehaviour
     private GameManager gameManager;
     private PauseMenu pauseMenu;
 
+    private int loopSentinel = 0;
+
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
@@ -25,6 +27,10 @@ public class StageEnd : MonoBehaviour
     private void LoseCondition()
     {
         // The stage is finish
-        if (!audioSource.isPlaying && !pauseMenu.GetIsPaused()) gameManager.EndOfStage();
+        if (!audioSource.isPlaying && !pauseMenu.GetIsPaused() && loopSentinel < 1)
+        {
+            loopSentinel++;
+            gameManager.EndOfStage();
+        }
     }
 }

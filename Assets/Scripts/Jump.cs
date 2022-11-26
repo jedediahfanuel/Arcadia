@@ -105,6 +105,10 @@ public class Jump : MonoBehaviour
     private void LoseCondition()
     {
         // The player out of camera
-        if (transform.position.x < leftBound) gameManager.EndOfStage();
+        if (transform.position.x < leftBound)
+        {
+            Destroy(gameObject);
+            gameManager.EndOfStage();
+        }
     }
 }
