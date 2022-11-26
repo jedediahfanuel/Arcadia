@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     public GameObject pauseMenuUI;
+    private bool isPaused;
     // AudioSource audioSource;
 
     void Start()
@@ -23,8 +24,26 @@ public class PauseMenu : MonoBehaviour
 
     public void Resume()
     {
-        pauseMenuUI.SetActive(false);
+        isPaused = false;
         Time.timeScale = 1f;
+
+        pauseMenuUI.SetActive(false);
+
+        PlayAudio();
+    }
+
+    public void Pause()
+    {
+        isPaused = true;
+        Time.timeScale = 0f;
+
+        pauseMenuUI.SetActive(true);
+        
+        PauseAudio();
+    }
+
+    public void PlayAudio()
+    {
         AudioSource[] audios = FindObjectsOfType<AudioSource>();
         foreach (AudioSource a in audios)
         {
@@ -32,10 +51,8 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
-    public void Pause()
+    public void PauseAudio()
     {
-        pauseMenuUI.SetActive(true);
-        Time.timeScale = 0f;
         AudioSource[] audios = FindObjectsOfType<AudioSource>();
         foreach (AudioSource a in audios)
         {
@@ -52,5 +69,10 @@ public class PauseMenu : MonoBehaviour
     public void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public bool GetIsPaused()
+    {
+        return isPaused;
     }
 }

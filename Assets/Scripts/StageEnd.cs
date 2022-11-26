@@ -6,6 +6,7 @@ public class StageEnd : MonoBehaviour
 {
     AudioSource audioSource;
     private GameManager gameManager;
+    private PauseMenu pauseMenu;
 
     void Start()
     {
@@ -13,6 +14,7 @@ public class StageEnd : MonoBehaviour
         if (audioSource == null) Debug.LogError("Audio source in -Music Object- is NULL");
 
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        pauseMenu = GameObject.Find("Canvas").GetComponent<PauseMenu>();
     }
 
     void Update()
@@ -23,6 +25,6 @@ public class StageEnd : MonoBehaviour
     private void LoseCondition()
     {
         // The stage is finish
-        if (!audioSource.isPlaying) gameManager.EndOfStage();
+        if (!audioSource.isPlaying && !pauseMenu.GetIsPaused()) gameManager.EndOfStage();
     }
 }
