@@ -9,6 +9,13 @@ public class PauseMenu : MonoBehaviour
     public GameObject pauseMenuUI;
     // AudioSource audioSource;
 
+    void Start()
+    {
+        if (pauseMenuUI == null) Debug.LogError("The Pause Menu UI in -Canvas > pauseMenu (Script)- is NULL");
+
+        pauseMenuUI.SetActive(false);
+    }
+
     // Update is called once per frame
     void Update()
     {

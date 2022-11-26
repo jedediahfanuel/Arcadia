@@ -14,6 +14,8 @@ public class ClosePanel : MonoBehaviour
     {
         if (finalScore == null) Debug.LogError("The Closing Panel in -Canvas > closePanel (Script)- is NULL");
         if (finalScore == null) Debug.LogError("The Final Score in -Canvas > closePanel (Script)- is NULL");
+        
+        closingPanel.SetActive(false);
     }
 
     // Update is called once per frame
@@ -37,13 +39,11 @@ public class ClosePanel : MonoBehaviour
 
     public void RestartStage()
     {
-        PanelOff();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void BackToSelection()
     {
-        PanelOff();
         SceneManager.LoadScene(1);
     }
 }

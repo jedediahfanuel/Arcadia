@@ -19,7 +19,9 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         closingPanel = GameObject.Find("Canvas").GetComponent<ClosePanel>();
-        closingPanel.PanelOff();
+
+        // Make sure the stage is running on start
+        Time.timeScale = 1f;
 
         audioSource = GetComponent<AudioSource>();
         CheckAudioSource();
