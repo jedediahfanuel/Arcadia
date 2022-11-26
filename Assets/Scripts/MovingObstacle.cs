@@ -10,10 +10,12 @@ public class MovingObstacle : MonoBehaviour
     public float moveSpeed = 10;
     private float leftBound = -30;
     Vector3 movement;
+    private GameManager gameManager;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -34,7 +36,7 @@ public class MovingObstacle : MonoBehaviour
         if (collision.gameObject.name == "player")
         {
             Vector2 direction = collision.GetContact(0).normal;
-            if( direction.x > 0.9 ) Debug.Log("Game over");
+            if( direction.x > 0.9 ) gameManager.EndOfStage();
         }
     }
 }
