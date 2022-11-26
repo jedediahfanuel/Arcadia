@@ -12,7 +12,8 @@ public class GameManager : MonoBehaviour
     private int score;
 
     [SerializeField]
-    private AudioClip fuelSound;
+    public AudioClip fuelSound;
+    public AudioClip gameOverSound;
     private AudioSource audioSource;
 
     void Start()
@@ -40,7 +41,7 @@ public class GameManager : MonoBehaviour
     {
         if (audioSource == null)
         {
-            Debug.LogError("The audio source in the -game manager- is NULL || the audio source commponent have not been added before");
+            Debug.LogError("Please add AudioSource component in GameManager Object");
         }
         else
         {
@@ -51,6 +52,11 @@ public class GameManager : MonoBehaviour
     public void PlayFuelSound()
     {
         audioSource.PlayOneShot(fuelSound);
+    }
+
+    public void PlayGameOverSound()
+    {
+        audioSource.PlayOneShot(gameOverSound);
     }
 
     public void UpdateScore(int scoreToAdd)

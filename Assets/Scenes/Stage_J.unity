@@ -31954,6 +31954,10 @@ PrefabInstance:
       propertyPath: closingPanel
       value: 
       objectReference: {fileID: 1879889142}
+    - target: {fileID: 2547493047007691172, guid: a3442599e561b3e41add1ec2d22d3073, type: 3}
+      propertyPath: gameOverSound
+      value: 
+      objectReference: {fileID: 8300000, guid: aa967a280457c054bb646d57611f5bd0, type: 3}
     - target: {fileID: 2547493047007691178, guid: a3442599e561b3e41add1ec2d22d3073, type: 3}
       propertyPath: m_Name
       value: GameManager
