@@ -27,11 +27,11 @@ public class ClosePanel : MonoBehaviour
         
     }
 
-    public void PanelOn(int fScore)
+    public void PanelOn(int fScore, int highscore)
     {
         closingPanel.SetActive(true);
         Time.timeScale = 0f;
-        finalScore.text = "Score : " + fScore;
+        finalScore.text = "Score : " + fScore + "\nHighscore : " + highscore;
 
         pauseMenu.PauseAudio();
         gameManager.PlayGameOverSound();
