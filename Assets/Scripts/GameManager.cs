@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 
     public TextMeshProUGUI scoreText;
     private ClosePanel closingPanel;
+    private DataPersistance dataController;
     private int score;
 
     [SerializeField]
@@ -19,6 +20,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         closingPanel = GameObject.Find("Canvas").GetComponent<ClosePanel>();
+        dataController = GameObject.Find("Data").GetComponent<DataPersistance>();
 
         // Make sure the stage is running on start
         Time.timeScale = 1f;
@@ -69,8 +71,32 @@ public class GameManager : MonoBehaviour
     {
         // Do Something after the stage is finish
         // Save score, etc.
-        Debug.LogError("The Final Score = " + score);
+        dataController.SetHighscoreStage(GetCurrentStage(), score);
+        dataController.SaveData();
 
         closingPanel.PanelOn(score);
+    }
+
+    private string GetCurrentStage()
+    {
+        string res = "";
+
+        switch (SceneManager.GetActiveScene().buildIndex)
+        {
+            case 2:
+                res = "D";
+                break;
+            case 3:
+                res = "E";
+                break;
+            case 4:
+                res = "J";
+                break;
+            case 5:
+                res = "T";
+                break;
+        }
+
+        return res;
     }
 }
