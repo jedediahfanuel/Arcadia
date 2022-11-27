@@ -32,12 +32,9 @@ public class DataPersistance : MonoBehaviour
         switch (stage)
         {
             case "D" or "E" or "J" or "T":
-                if (PlayerPrefs.HasKey(stage))
+                if (GetHighscore(stage) < newScore)
                 {
-                    if (GetHighscore(stage) < newScore)
-                    {
-                        PlayerPrefs.SetInt(stage, newScore);
-                    }
+                    PlayerPrefs.SetInt(stage, newScore);
                 }
                 break;
             default:
