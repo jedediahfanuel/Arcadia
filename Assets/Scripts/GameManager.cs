@@ -74,7 +74,7 @@ public class GameManager : MonoBehaviour
         dataController.SetHighscoreStage(GetCurrentStage(), score);
         dataController.SaveData();
 
-        closingPanel.PanelOn(score);
+        closingPanel.PanelOn(score, dataController.GetHighscore(GetCurrentStage()));
     }
 
     private string GetCurrentStage()
