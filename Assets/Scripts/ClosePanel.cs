@@ -13,7 +13,7 @@ public class ClosePanel : MonoBehaviour
 
     void Start()
     {
-        if (finalScore == null) Debug.LogError("The Closing Panel in -Canvas > closePanel (Script)- is NULL");
+        if (closingPanel == null) Debug.LogError("The Closing Panel in -Canvas > closePanel (Script)- is NULL");
         if (finalScore == null) Debug.LogError("The Final Score in -Canvas > closePanel (Script)- is NULL");
 
         closingPanel.SetActive(false);

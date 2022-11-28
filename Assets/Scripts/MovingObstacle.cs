@@ -10,11 +10,13 @@ public class MovingObstacle : MonoBehaviour
     private float leftBound = -30;
     Vector3 movement;
     private GameManager gameManager;
+    private Perks perks;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        perks = GameObject.Find("PowerUp").GetComponent<Perks>();
     }
 
     void Update()
@@ -32,8 +34,15 @@ public class MovingObstacle : MonoBehaviour
     {
         if (collision.gameObject.name == "player")
         {
-            Vector2 direction = collision.GetContact(0).normal;
-            if( direction.x > 0.9 ) gameManager.EndOfStage();
+            if (perks.GetIsHealth())
+            {
+                Destroy(gameObject);
+            }
+            else
+            {
+                Vector2 direction = collision.GetContact(0).normal;
+                if (direction.x > 0.9) gameManager.EndOfStage();
+            }
         }
     }
 }
