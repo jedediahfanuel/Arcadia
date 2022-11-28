@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI scoreText;
     private ClosePanel closingPanel;
     private DataPersistance dataController;
+    private Perks perks;
     private int score;
 
     [SerializeField]
@@ -21,6 +22,7 @@ public class GameManager : MonoBehaviour
     {
         closingPanel = GameObject.Find("Canvas").GetComponent<ClosePanel>();
         dataController = GameObject.Find("Data").GetComponent<DataPersistance>();
+        perks = GameObject.Find("PowerUp").GetComponent<Perks>();
 
         // Make sure the stage is running on start
         Time.timeScale = 1f;
@@ -72,6 +74,7 @@ public class GameManager : MonoBehaviour
         // Do Something after the stage is finish
         // Save score, etc.
         dataController.SetHighscoreStage(GetCurrentStage(), score);
+        dataController.SetHealthPowerUp(perks.GetHealthAmount());
         dataController.SaveData();
 
         closingPanel.PanelOn(score, dataController.GetHighscore(GetCurrentStage()));

@@ -111,4 +111,15 @@ public class Jump : MonoBehaviour
             gameManager.EndOfStage();
         }
     }
+
+    public void FreezeX()
+    {
+        rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
+    }
+
+    public void UnFreezeX()
+    {
+        //Remove all constraints
+        rb.constraints = RigidbodyConstraints2D.None;
+    }
 }

@@ -48,9 +48,9 @@ public class DataPersistance : MonoBehaviour
         PlayerPrefs.SetInt("M", newMoney);
     }
 
-    public void SetPowerUp(int newPowerUp)
+    public void SetHealthPowerUp(int newPowerUp)
     {
-        PlayerPrefs.SetInt("P", newPowerUp);
+        PlayerPrefs.SetInt("H", newPowerUp);
     }
 
     public int GetHighscore(string stage)
@@ -63,8 +63,8 @@ public class DataPersistance : MonoBehaviour
         return PlayerPrefs.GetInt("M", 0);
     }
 
-    public int GetPowerUp()
+    public int GetHealthPowerUp()
     {
-        return PlayerPrefs.GetInt("P", 0);
+        return PlayerPrefs.GetInt("H", 0);
     }
 }
