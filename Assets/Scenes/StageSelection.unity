@@ -981,6 +981,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shopPanel: {fileID: 13575590}
+  moneyTMP: {fileID: 763422903}
   inStockTMP: {fileID: 280860957}
 --- !u!114 &176053948
 MonoBehaviour:
