@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
     public AudioClip gameOverSound;
     private AudioSource audioSource;
 
+    private bool isGameOver;
+
     void Start()
     {
         closingPanel = GameObject.Find("Canvas").GetComponent<ClosePanel>();
@@ -26,6 +28,7 @@ public class GameManager : MonoBehaviour
 
         // Make sure the stage is running on start
         Time.timeScale = 1f;
+        isGameOver = false;
 
         audioSource = GetComponent<AudioSource>();
         CheckAudioSource();
@@ -71,14 +74,16 @@ public class GameManager : MonoBehaviour
 
     public void EndOfStage()
     {
-        // Do Something after the stage is finish
-        // Save score, etc.
-        dataController.SetHighscoreStage(GetCurrentStage(), score);
-        dataController.SetHealthPowerUp(perks.GetHealthAmount());
-        dataController.SetMoney(dataController.GetMoney() + score);
-        dataController.SaveData();
+        if (!isGameOver)
+        {
+            isGameOver = true;
+            dataController.SetHighscoreStage(GetCurrentStage(), score);
+            dataController.SetHealthPowerUp(perks.GetHealthAmount());
+            dataController.SetMoney(dataController.GetMoney() + score);
+            dataController.SaveData();
 
-        closingPanel.PanelOn(score, dataController.GetHighscore(GetCurrentStage()));
+            closingPanel.PanelOn(score, dataController.GetHighscore(GetCurrentStage()));
+        }
     }
 
     private string GetCurrentStage()
