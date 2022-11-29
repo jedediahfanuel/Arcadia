@@ -2,17 +2,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class StageSelection : MonoBehaviour
 {
+
+    public GameObject shopPanel;
+    public TextMeshProUGUI inStockTMP;
+
     void Start()
     {
-        
+        if (shopPanel == null) Debug.LogError("The Shop Panel in -Canvas > StageSelection (Script)- is NULL");
+        if (inStockTMP == null) Debug.LogError("The In Stock TMP in -Canvas > StageSelection (Script)- is NULL");
+
+        shopPanel.SetActive(false);
     }
 
     void Update()
     {
         
+    }
+
+    public void ShopPanelOn()
+    {
+        shopPanel.SetActive(true);
+    }
+
+    public void ShopPanelOff()
+    {
+        shopPanel.SetActive(false);
     }
 
     // The number argument is
@@ -37,10 +55,5 @@ public class StageSelection : MonoBehaviour
     public void LoadStageT()
     {
         SceneManager.LoadScene(5);
-    }
-
-    public void LoadShop()
-    {
-        // SceneManager.LoadScene(5);
     }
 }

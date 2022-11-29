@@ -140,7 +140,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &13575591
 RectTransform:
   m_ObjectHideFlags: 0
@@ -980,6 +980,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28c2d03f47a36fe4299ce4fd86d91819, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shopPanel: {fileID: 13575590}
+  inStockTMP: {fileID: 280860957}
 --- !u!114 &176053948
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3813,7 +3815,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1479603403}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 176053947}
+        m_TargetAssemblyTypeName: StageSelection, Assembly-CSharp
+        m_MethodName: ShopPanelOff
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1588447100
 GameObject:
   m_ObjectHideFlags: 0
@@ -4586,7 +4600,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 176053947}
         m_TargetAssemblyTypeName: StageSelection, Assembly-CSharp
-        m_MethodName: LoadShop
+        m_MethodName: ShopPanelOn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
