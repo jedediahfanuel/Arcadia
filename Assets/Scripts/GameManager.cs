@@ -75,7 +75,7 @@ public class GameManager : MonoBehaviour
         // Save score, etc.
         dataController.SetHighscoreStage(GetCurrentStage(), score);
         dataController.SetHealthPowerUp(perks.GetHealthAmount());
-        dataController.SetMoney(score);
+        dataController.SetMoney(dataController.GetMoney() + score);
         dataController.SaveData();
 
         closingPanel.PanelOn(score, dataController.GetHighscore(GetCurrentStage()));
