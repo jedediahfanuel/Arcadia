@@ -8,10 +8,11 @@ public class Perks : MonoBehaviour
 
     private bool isHealth;
     private float timeRemaining;
-    private Jump player;
-    private DataPersistance dataController;
     private int healthAmount;
     public TextMeshProUGUI healthText;
+    public TextMeshProUGUI timeRemainingTMP;
+    private Jump player;
+    private DataPersistance dataController;
 
     [SerializeField]
     public AudioClip healthSound;
@@ -20,19 +21,14 @@ public class Perks : MonoBehaviour
 
     void Start()
     {
-        if (healthText == null) Debug.LogError("The Health Text in -PowerUp > Perks (Script)- is NULL");
-
         isHealth = false;
         timeRemaining = 0;
 
         player = GameObject.Find("player").GetComponent<Jump>();
-        
         dataController = GameObject.Find("Data").GetComponent<DataPersistance>();
         healthAmount = dataController.GetHealthPowerUp();
 
-        healthText.text = healthAmount + "x";
-
-        audioSource = GetComponent<AudioSource>();
+        SetupTMP();
         CheckAudioSource();
     }
 
@@ -41,8 +37,18 @@ public class Perks : MonoBehaviour
         HealthTimer();
     }
 
+    private void SetupTMP()
+    {
+        if (healthText == null) Debug.LogError("The Health Text in -PowerUp > Perks (Script)- is NULL");
+        healthText.text = healthAmount + "x";
+
+        if (timeRemainingTMP == null) Debug.LogError("Time Remaining TMP in the -Canvas > PowerUp > Perks (Script)- is NULL");
+        timeRemainingTMP.enabled = false;
+    }
+
     private void CheckAudioSource()
     {
+        audioSource = GetComponent<AudioSource>();
         if (audioSource == null) Debug.LogError("The audio source in the -PowerUp Object- is NULL");
     }
 
@@ -57,6 +63,8 @@ public class Perks : MonoBehaviour
             player.FreezeX();
             audioSource.PlayOneShot(healthSound);
             healthText.text = healthAmount + "x";
+
+            timeRemainingTMP.enabled = true;
         }
     }
 
@@ -65,12 +73,15 @@ public class Perks : MonoBehaviour
         if (isHealth && timeRemaining > 0)
         {
             timeRemaining -= Time.deltaTime;
+            timeRemainingTMP.text = "Immunity " + timeRemaining + "s";
 
             if (timeRemaining <= 0) 
             {
                 isHealth = false;
                 player.UnFreezeX();
                 audioSource.PlayOneShot(debuffSound);
+
+                timeRemainingTMP.enabled = false;
             }
         }
     }
