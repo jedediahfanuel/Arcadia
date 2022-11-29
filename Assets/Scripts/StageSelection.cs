@@ -15,6 +15,12 @@ public class StageSelection : MonoBehaviour
     private int healthPrice = 10;
     private DataPersistance dataController;
 
+    public AudioClip openShopSound;
+    public AudioClip closeShopSound;
+    public AudioClip buttonClickSound;
+    public AudioClip buySound;
+    private AudioSource audioSource;
+
     void Start()
     {
         if (shopPanel == null) Debug.LogError("The Shop Panel in -Canvas > StageSelection (Script)- is NULL");
@@ -24,12 +30,23 @@ public class StageSelection : MonoBehaviour
 
         dataController = GameObject.Find("Data").GetComponent<DataPersistance>();
 
+        audioSource = GetComponent<AudioSource>();
+        CheckSFX();
+
         shopPanel.SetActive(false);
     }
 
     void Update()
     {
         
+    }
+
+    private void CheckSFX()
+    {
+        if (audioSource == null) Debug.LogError("Please add AudioSource component in Canvas Object");
+        if (openShopSound == null) Debug.LogWarning("Canvas > Stage Selection (Script) > Open Shop Sound | missing");
+        if (closeShopSound == null) Debug.LogWarning("Canvas > Stage Selection (Script) > Close Shop Sound | missing");
+        if (buySound == null) Debug.LogWarning("Canvas > Stage Selection (Script) > Buy Sound | missing");
     }
 
     private void UpdateInStockTMP()
@@ -45,6 +62,7 @@ public class StageSelection : MonoBehaviour
     public void ShopPanelOn()
     {
         shopPanel.SetActive(true);
+        audioSource.PlayOneShot(openShopSound);
 
         UpdateMoneyTMP();
         UpdateInStockTMP();
@@ -53,6 +71,8 @@ public class StageSelection : MonoBehaviour
     public void ShopPanelOff()
     {
         dataController.SaveData();
+        audioSource.PlayOneShot(closeShopSound);
+
         shopPanel.SetActive(false);
     }
 
@@ -62,6 +82,7 @@ public class StageSelection : MonoBehaviour
         {
             healthCart += 1;
             healthCartTMP.text = healthCart + "x";
+            audioSource.PlayOneShot(buttonClickSound);
         }
     }
 
@@ -71,19 +92,25 @@ public class StageSelection : MonoBehaviour
         {
             healthCart -= 1;
             healthCartTMP.text = healthCart + "x";
+            audioSource.PlayOneShot(buttonClickSound);
         }
     }
 
     public void Buy()
     {
-        dataController.SetHealthPowerUp(dataController.GetHealthPowerUp() + healthCart);
-        UpdateInStockTMP();
+        if (healthCart > 0)
+        {
+            dataController.SetHealthPowerUp(dataController.GetHealthPowerUp() + healthCart);
+            UpdateInStockTMP();
 
-        dataController.SetMoney(dataController.GetMoney() - (healthCart * healthPrice));
-        UpdateMoneyTMP();
+            dataController.SetMoney(dataController.GetMoney() - (healthCart * healthPrice));
+            UpdateMoneyTMP();
 
-        healthCart = 0;
-        healthCartTMP.text = healthCart + "x";
+            healthCart = 0;
+            healthCartTMP.text = healthCart + "x";
+
+            audioSource.PlayOneShot(buySound);   
+        }
     }
 
     // The number argument is
