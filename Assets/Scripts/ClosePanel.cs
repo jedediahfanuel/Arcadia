@@ -10,6 +10,7 @@ public class ClosePanel : MonoBehaviour
     public TextMeshProUGUI finalScore;
     private PauseMenu pauseMenu;
     private GameManager gameManager;
+    private UniversalAudio universalAudio;
 
     void Start()
     {
@@ -20,6 +21,7 @@ public class ClosePanel : MonoBehaviour
 
         pauseMenu = GameObject.Find("Canvas").GetComponent<PauseMenu>();
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        universalAudio = GameObject.Find("Data").GetComponent<UniversalAudio>();
     }
 
     void Update()
@@ -40,11 +42,13 @@ public class ClosePanel : MonoBehaviour
     public void PanelOff()
     {
         Time.timeScale = 1f;
+        universalAudio.PlayButtonSFX();
         closingPanel.SetActive(false);
     }
 
     public void RestartStage()
     {
+        PanelOff();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
