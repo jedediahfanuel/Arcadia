@@ -14,6 +14,7 @@ public class StageSelection : MonoBehaviour
     private int healthCart = 0;
     private int healthPrice = 10;
     private DataPersistance dataController;
+    private UniversalAudio universalAudio;
 
     public AudioClip openShopSound;
     public AudioClip closeShopSound;
@@ -29,6 +30,7 @@ public class StageSelection : MonoBehaviour
         if (healthCartTMP == null) Debug.LogError("The Health Cart TMP in -Canvas > StageSelection (Script)- is NULL");
 
         dataController = GameObject.Find("Data").GetComponent<DataPersistance>();
+        universalAudio = GameObject.Find("Data").GetComponent<UniversalAudio>();
 
         audioSource = GetComponent<AudioSource>();
         CheckSFX();
@@ -119,21 +121,25 @@ public class StageSelection : MonoBehaviour
 
     public void LoadStageD()
     {
+        universalAudio.PlayButtonSFX();
         SceneManager.LoadScene(2);
     }
     
     public void LoadStageE()
     {
+        universalAudio.PlayButtonSFX();
         SceneManager.LoadScene(3);
     }
 
     public void LoadStageJ()
     {
+        universalAudio.PlayButtonSFX();
         SceneManager.LoadScene(4);
     }
 
     public void LoadStageT()
     {
+        universalAudio.PlayButtonSFX();
         SceneManager.LoadScene(5);
     }
 }

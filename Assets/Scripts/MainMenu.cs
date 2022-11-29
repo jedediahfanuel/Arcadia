@@ -5,9 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    private UniversalAudio universalAudio;
+
     void Start()
     {
-        
+        universalAudio = GameObject.Find("Data").GetComponent<UniversalAudio>();
     }
 
     void Update()
@@ -17,7 +19,7 @@ public class MainMenu : MonoBehaviour
 
     public void LoadGame()
     {
-        // Load the stage selection scene
+        universalAudio.PlayButtonSFX();
         SceneManager.LoadScene(1);
     }
 }
