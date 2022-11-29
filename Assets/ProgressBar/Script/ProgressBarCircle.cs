@@ -39,13 +39,11 @@ public class ProgressBarCircle : MonoBehaviour {
             value = Mathf.Clamp(value, 0, 100);
             barValue = value;
             UpdateValue(barValue);
-
         }
     }
 
     private void Awake()
     {
-
         txtTitle = transform.Find("Text").GetComponent<Text>();
         barBackground = transform.Find("BarBackgroundCircle").GetComponent<Image>();
         bar = transform.Find("BarCircle").GetComponent<Image>();
@@ -66,13 +64,10 @@ public class ProgressBarCircle : MonoBehaviour {
         barBackground.sprite = BarBackGroundSprite;
 
         UpdateValue(barValue);
-
-
     }
 
     void UpdateValue(float val)
     {
-       
         bar.fillAmount = -(val / 100) + 1f;
 
         txtTitle.text = Title + " " + val + "%";
@@ -85,14 +80,11 @@ public class ProgressBarCircle : MonoBehaviour {
         {
             barBackground.color = BarBackGroundColor;
         }
-
     }
 
 
     private void Update()
     {
-       
-
         if (!Application.isPlaying)
         {
            
