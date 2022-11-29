@@ -1,21 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Jump : MonoBehaviour
 {
     public float jumpSpeed = 25;
-    public Rigidbody2D rb;
-    bool isGrounded;
-    Vector3 movement;
-    int c;
-    bool isUpsideDown = false;
     public float moveSpeed = 10;
-    GameObject player;
-    private AudioSource audioSource;
-    float elapsed = 0f;
-    private GameManager gameManager;
     private float leftBound = -30;
+    float elapsed = 0f;
+    int c;
+
+    bool isGrounded;
+    bool isUpsideDown = false;
+
+    public Rigidbody2D rb;
+    Vector3 movement;
+    GameObject player;
+
+    private AudioSource audioSource;
+    private GameManager gameManager;
 
     void Start()
     {
@@ -24,12 +28,12 @@ public class Jump : MonoBehaviour
         player = GameObject.Find("player");
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         
-        audioSource = GetComponent<AudioSource>();
         CheckAudioSource();
     }
 
     private void CheckAudioSource()
     {
+        audioSource = GetComponent<AudioSource>();
         if (audioSource == null) Debug.LogError("The audio source in the -player- is NULL || the audio source commponent have not been added before");
     }
 
@@ -65,14 +69,17 @@ public class Jump : MonoBehaviour
         {
             if (touch.phase == TouchPhase.Began)
             {
-                rb.AddForce(new Vector2(0f, jumpSpeed - rb.velocity.y), ForceMode2D.Impulse);
-                audioSource.Play();
+                if (!EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
+                {
+                    rb.AddForce(new Vector2(0f, jumpSpeed - rb.velocity.y), ForceMode2D.Impulse);
+                    audioSource.Play();
 
-                if (c > 0) {
-                    c = c - 1;
-                } else {
-                    isGrounded = false;
-                }
+                    if (c > 0) {
+                        c = c - 1;
+                    } else {
+                        isGrounded = false;
+                    }
+                }                
             }
         }
     }
