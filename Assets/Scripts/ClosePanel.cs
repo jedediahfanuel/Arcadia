@@ -39,8 +39,8 @@ public class ClosePanel : MonoBehaviour
 
     public void PanelOff()
     {
-        closingPanel.SetActive(false);
         Time.timeScale = 1f;
+        closingPanel.SetActive(false);
     }
 
     public void RestartStage()
@@ -50,6 +50,7 @@ public class ClosePanel : MonoBehaviour
 
     public void BackToSelection()
     {
+        PanelOff();
         SceneManager.LoadScene(1);
     }
 }
