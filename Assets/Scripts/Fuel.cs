@@ -29,9 +29,7 @@ public class Fuel : MonoBehaviour
         {
             gameManager.PlayFuelSound();
             gameManager.UpdateScore(1);
-            // pb.BarValue += 5;
             hb.AddProgressBar(5);
-            // Debug.Log(pb.BarValue);
             Destroy(gameObject);
         }
     }

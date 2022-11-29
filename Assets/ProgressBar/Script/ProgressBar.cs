@@ -46,7 +46,7 @@ public class ProgressBar : MonoBehaviour
         }
     }
 
-        
+    private GameManager gameManager;
 
     private void Awake()
     {
@@ -70,7 +70,7 @@ public class ProgressBar : MonoBehaviour
 
         UpdateValue(barValue);
 
-
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     void UpdateValue(float val)
@@ -86,7 +86,6 @@ public class ProgressBar : MonoBehaviour
         {
             bar.color = BarColor;
         }
-
     }
 
 
@@ -111,6 +110,8 @@ public class ProgressBar : MonoBehaviour
                 nextPlay = Time.time + RepeatRate;
                 audiosource.PlayOneShot(sound);
             }
+
+            if (barValue < 1) gameManager.EndOfStage();
         }
     }
 
