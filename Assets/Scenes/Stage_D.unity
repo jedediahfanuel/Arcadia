@@ -501,7 +501,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 8d8b78965fdf25045af334976b75556a, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 0bd97afdf679750498fa06199caf5c7e, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.2
   m_Pitch: 1
@@ -786,6 +786,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1365234905, guid: 144b94728d4807c4bbeeee4f174cf19d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 22.299927
+      objectReference: {fileID: 0}
     - target: {fileID: 1629199460, guid: 144b94728d4807c4bbeeee4f174cf19d, type: 3}
       propertyPath: m_fontColor.b
       value: 0.16037738
@@ -1173,6 +1177,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4577185863530268468, guid: 7d10811b03016914ba5e713d446111a9, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4577185863530268468, guid: 7d10811b03016914ba5e713d446111a9, type: 3}
+      propertyPath: m_GravityScale
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4577185863530268468, guid: 7d10811b03016914ba5e713d446111a9, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6953580792529785778, guid: 7d10811b03016914ba5e713d446111a9, type: 3}
       propertyPath: m_Name
       value: player
