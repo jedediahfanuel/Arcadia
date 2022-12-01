@@ -53,6 +53,11 @@ public class DataPersistance : MonoBehaviour
         PlayerPrefs.SetInt("H", newPowerUp);
     }
 
+    public void SetCutscene(int finishWatch)
+    {
+        PlayerPrefs.SetInt("C", finishWatch);
+    }
+
     public int GetHighscore(string stage)
     {
         return PlayerPrefs.GetInt(stage, 0);
@@ -66,5 +71,10 @@ public class DataPersistance : MonoBehaviour
     public int GetHealthPowerUp()
     {
         return PlayerPrefs.GetInt("H", 0);
+    }
+
+    public int GetCutscene()
+    {
+        return PlayerPrefs.GetInt("C", 0);
     }
 }
