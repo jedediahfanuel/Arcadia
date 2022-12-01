@@ -20,6 +20,7 @@ public class MainMenu : MonoBehaviour
     public void LoadGame()
     {
         universalAudio.PlayButtonSFX();
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(6);
+        //SceneManager.LoadScene(1);
     }
 }
